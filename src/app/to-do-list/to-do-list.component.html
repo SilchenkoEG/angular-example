@@ -1,0 +1,31 @@
+<div>
+  <form [style.width.px]="250" [formGroup]="toDoControl" (ngSubmit)="submitForm()">
+    <input formControlName="task">
+    <button class="btn">Add to do list</button>
+  </form>
+  <div *ngIf="submitted && f.task.errors?.minlength" class="error">
+    Error, minLength = 3
+  </div>
+</div>
+<div>
+  <div [style.float]="'left'">
+    <h1>To Do List</h1>
+    <ol>
+      <li  *ngFor="let item of toDoList; let i = index " (click)="doneTask(item,i)">
+        <span [style.margin-right.px]="23" >Task: {{item?.task}}</span>
+        <span>Status: {{item?.status}}</span>
+      </li>
+    </ol>
+  </div>
+  <div [style.float]="'right'">
+    <h1>Done List</h1>
+    <ol>
+      <li  *ngFor="let item of doneList ">
+        <span [style.margin-right.px]="23" >Task: {{item?.task}}</span>
+        <span>Status: {{item?.status}}</span>
+      </li>
+    </ol>
+  </div>
+</div>
+
+

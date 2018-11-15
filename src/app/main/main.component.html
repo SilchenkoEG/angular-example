@@ -1,0 +1,8 @@
+<p>
+  {{ name }}
+</p>
+<ul>
+  <li *ngFor="let item of dataMain">
+    <a [routerLink]=" 'post/'+ item.id ">{{ item?.title }}</a>
+  </li>
+</ul>
