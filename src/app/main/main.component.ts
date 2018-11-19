@@ -14,7 +14,8 @@ export class MainComponent implements OnInit {
   constructor() {
   }
   async ngOnInit() {
-    this.dataMain = await fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
+    this.dataMain = await fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json());
   }
 
 }

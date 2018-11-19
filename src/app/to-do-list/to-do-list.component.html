@@ -1,17 +1,22 @@
-<div>
-  <form [style.width.px]="250" [formGroup]="toDoControl" (ngSubmit)="submitForm()">
-    <input formControlName="task">
-    <button class="btn">Add to do list</button>
+<div class="container">
+  <form class="example-form" [formGroup]="toDoControl" (ngSubmit)="submitForm()">
+    <mat-form-field  class="example-full-width">
+      <input matInput formControlName="task">
+    </mat-form-field>
+    <button mat-raised-button color="accent">Add to do list</button>
   </form>
   <div *ngIf="submitted && f.task.errors?.minlength" class="error">
     Error, minLength = 3
+  </div>
+  <div *ngIf="submitted && f.task.errors?.required" class="error">
+    Name is required
   </div>
 </div>
 <div>
   <div [style.float]="'left'">
     <h1>To Do List</h1>
     <ol>
-      <li  *ngFor="let item of toDoList; let i = index " (click)="doneTask(item,i)">
+      <li  *ngFor="let item of toDoList$ | async; let i = index " (click)="doneTask(item,i)">
         <span [style.margin-right.px]="23" >Task: {{item?.task}}</span>
         <span>Status: {{item?.status}}</span>
       </li>
